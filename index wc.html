@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORD COUNTER</title>
+<style>
+    
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFDEE9, #B5FFFC); 
+    padding: 50px 0 0;
+}
+
+
+h1 {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+textarea {
+    height: 30vh;
+    border: 2px solid #6A11CB;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    color: #333;
+    resize: none;
+    background-color: #E3F2FD;
+}
+
+p {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px;
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    color: #ffffff;
+    border-radius: 10px;
+}
+h1, p, textarea {
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+
+
+</style>
+</head>
+<body>
+    <h1>WORDS AND CHARACTER COUNTER</h1>
+
+    <textarea id="tr"> </textarea>
+    <p>
+        Words: <span id="word"> 0</span>
+    Characters: <span id="char">0</span>
+    </p>
+
+    <script>
+        let txarea=document.getElementById('tr')
+        txarea.addEventListener('input',function(){
+            var text = this.value;           /*textarea me jo i/p hoga wo var text me rhega*/
+            let textlen =text.length;        /*ab var text ka length textlen me ajyega*/
+    
+
+            document.getElementById("char").innerHTML=textlen; 
+            /* yha pr var me store nhi kiye id ko kyu ki uspr zada kam nhi krna h 
+            jaise upr txtarea wla pe krna tha isko yhi se change kr liye
+            yanni ki ab textlen char span ko point kkrrha ise phle wo txarea ko krha tha
+            ab ye chartacter ka length count krega*/
+
+            text= text.trim();       /* spaces age piche ka hata dega word me count nhi krega space*/
+            let words=text.split(" ");  
+            /* ab word counter bana rhe to word me space na count ho
+            uske liye ye method split aya hai yha var  text me jo store hoga usi pe 
+            apply horha split()*/
+
+             
+             let midspc= words.filter(function(elm){
+                return elm != "";
+             }); /*words ke mid ka space v count nhi hoga ab*/
+             
+            document.getElementById('word').innerHTML=midspc.length;
+
+        });
+    </script>
+
+    
+</body>
+</html>
